@@ -18,11 +18,19 @@ request(pageToVisit, (err, res, body) => {
 })
 
 function searchForWord($, word) {
-  const bodyText = $('html > body').text()
-  if (bodyText.toLowerCase().indexOf(word.toLowerCase()) !== -1) {
-    console.log('true')
-  }
-  else {
-    console.log('false')
+  const products = $('div .js-pod')
+  for (var i = 0; i < products.length; i++) {
+    let product = $(products[i]).text()
+    let productList = []
+    productList.push(product)
+    productList.map((model) => {
+      if (model.toLowerCase().indexOf(word.toLowerCase()) !== -1) {
+        const modelNumber = $('div .pod-plp__model').text()
+        console.log(model)
+      }
+      else {
+        console.log('false')
+      }
+    })
   }
 }
